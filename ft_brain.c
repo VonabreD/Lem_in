@@ -12,6 +12,23 @@
 
 #include "lem_in.h"
 
+void	ft_links_test(char *str, t_names *names)
+{
+	t_names	*nam_ptr;
+	int		i;
+
+	i = 0;
+	nam_ptr = names;
+	while (nam_ptr != NULL)
+	{
+		if (ft_strcmp(nam_ptr->name, str) == 0)
+			i++;
+		nam_ptr = nam_ptr->next;
+	}
+	if (i == 0)
+		ft_err();
+}
+
 void	ft_brain_help(t_que **que, t_names *ns, t_links *ln)
 {
 	t_names *e;

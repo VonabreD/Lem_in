@@ -35,7 +35,7 @@ void	ft_commands(char **data)
 		if (ft_strcmp(data[i], "##end") == 0)
 			ft_command_help(&end, data[++i]);
 	}
-	if (st != 1 && end != 1)
+	if (st != 1 || end != 1)
 		ft_err();
 }
 

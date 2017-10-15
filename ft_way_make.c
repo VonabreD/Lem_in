@@ -59,6 +59,8 @@ int		ft_count_ways(t_tub *tub, int ants)
 	i = -1;
 	j = 0;
 	len = 0;
+	if (tub[0].len == 2)
+		return (1);
 	while (tub[++i].finit != -666)
 	{
 		if (tub[i].finit == 1 && len < ants)

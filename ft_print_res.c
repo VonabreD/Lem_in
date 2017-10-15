@@ -58,15 +58,14 @@ void	ft_print_ways(int ants, t_tub *tub, char **data_in)
 
 int		ft_print_step(t_tub *tub)
 {
-	int		i;
-	int		j;
+	int		i[2];
 	t_way	*tmp;
 
-	j = 0;
-	i = -1;
-	while (tub[++i].finit != -666)
+	i[1] = 0;
+	i[0] = -1;
+	while (tub[++i[0]].finit != -666)
 	{
-		tmp = tub[i].way->end;
+		tmp = tub[i[0]].way->end;
 		while (tmp != NULL)
 		{
 			if (tmp->ant > 0)
@@ -76,13 +75,13 @@ int		ft_print_step(t_tub *tub)
 				write(1, "-", 1);
 				ft_putstr(tmp->name);
 				write(1, " ", 1);
-				j++;
+				i[1]++;
 			}
 			tmp = tmp->pre;
 		}
 	}
 	write(1, "\n", 1);
-	return (j);
+	return (i[1]);
 }
 
 int		ft_err(void)

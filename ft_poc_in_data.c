@@ -58,6 +58,13 @@ void	ft_init_links(t_links **links, t_links **start)
 
 void	ft_links_help(char **d, t_names *n, int i, t_links **l)
 {
+	int		ig;
+	t_names	*ptr;
+
+	ig = 0;
+	if (n == NULL)
+		ig++;
+	ptr = n;
 	while (n != NULL)
 	{
 		if (d[i][ft_strlen(n->name)] == '-' && ft_strcmp(n->name, d[i]) == -45)
@@ -65,9 +72,13 @@ void	ft_links_help(char **d, t_names *n, int i, t_links **l)
 			ft_init_links(&l[0], &l[1]);
 			l[0]->name1 = ft_strjoin("", n->name);
 			l[0]->name2 = ft_strjoin("", &d[i][ft_strlen(n->name) + 1]);
+			ft_links_test(l[0]->name2, ptr);
+			ig++;
 		}
 		n = n->next;
 	}
+	if (ig == 0)
+		ft_err();
 }
 
 t_links	*ft_take_links(char **data, t_names *names)
@@ -80,8 +91,16 @@ t_links	*ft_take_links(char **data, t_names *names)
 	links[1] = NULL;
 	while (ft_is_link(data[i]) != 1)
 		i++;
+	if (data[i - 1] != NULL && (ft_is_room(data[i - 1]) == 0
+								&& ft_is_comment(data[i - 1]) == 0))
+		ft_err();
 	while (data[i] != NULL)
 	{
+		if (ft_is_comment(data[i]) == 1)
+		{
+			i++;
+			break ;
+		}
 		if (ft_is_link(data[i]) == 0)
 			ft_err();
 		ft_links_help(data, names, i, links);

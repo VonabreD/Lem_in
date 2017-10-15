@@ -15,14 +15,6 @@
 # include "get_next_line.h"
 # include "libft/libft.h"
 
-typedef struct		s_graf{
-	char			*name;
-	int				len;
-	int				used;
-	struct s_graf	**links;
-	struct s_graf	*next;
-}					t_graf;
-
 typedef struct		s_links{
 	char			*name1;
 	char			*name2;
@@ -48,7 +40,6 @@ typedef struct		s_names{
 	char			*name;
 	int				dist;
 	int				used;
-	int				num;
 	int				x;
 	int				y;
 	struct s_names	*next;
@@ -109,5 +100,6 @@ int					ft_count_ways(t_tub *tub, int ants);
 int					ft_fill_rooms(t_tub *tub, int n_a);
 void				ft_pre_ways(t_tub *tub);
 void				ft_brain_help(t_que **que, t_names *ns, t_links *ln);
+void				ft_links_test(char *str, t_names *names);
 
 #endif

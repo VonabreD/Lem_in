@@ -86,7 +86,6 @@ void	ft_init_names(t_names **start, t_names **names, char **data, int *i)
 		*names = (*names)->next;
 	}
 	(*names)->name = ft_first_wrd(data[i[0]]);
-	(*names)->num = i[1]++;
 	(*names)->pos = ft_is_command(data[i[0] - 1]);
 	if ((*names)->pos == 2)
 		(*names)->dist = 0;
